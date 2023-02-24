@@ -1,0 +1,11 @@
+.monthly-container{
+    width: 80%;
+}
+.present-stu{
+    color:green;
+    font-weight: 700;
+}
+.absent-stu{
+    color:red;
+    font-weight: 700;
+}
