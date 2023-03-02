@@ -9,8 +9,8 @@ import students from './routes/student.js'
 
 
 const app = express()
-const port = process.env.PORT || 8000
-const DATABASE_URL = process.env.DATABASE_URL
+const port = 8000
+const DATABASE_URL = "mongodb+srv://luckypatel:sttl123@cluster0.z6pvres.mongodb.net/?retryWrites=true&w=majority"
 
 
 app.use(cors("*"))
