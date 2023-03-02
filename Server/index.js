@@ -9,7 +9,7 @@ import students from './routes/student.js'
 
 
 const app = express()
-const port = process.env.PORT
+const port = process.env.PORT || 8000
 const DATABASE_URL = process.env.DATABASE_URL
 
 
