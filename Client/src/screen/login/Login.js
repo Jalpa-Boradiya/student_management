@@ -62,7 +62,7 @@ console.log(props);
                     <div className='middleCalLogin'>
                         <div className='checkboxCal'>
                             <input type='checkbox' />
-                            <label>Remamber me</label>
+                            <label>Remember me</label>
                         </div>
                         <a href='#top' className='forgot-pass'>Forgot Password?</a>
                     </div>
