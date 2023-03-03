@@ -17,11 +17,11 @@ app.use(cors("*"))
 app.use(express.json())
 connectDB(DATABASE_URL)
 
-app.get('/', (req, res) => {
+app.get('/api/', (req, res) => {
     res.send('Hello World')
 })
 
-app.use('/student',students )
+app.use('/api/student',students )
 
 app.use(notFound)
 app.use(errorHandler)
