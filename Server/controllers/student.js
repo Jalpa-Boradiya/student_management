@@ -10,7 +10,6 @@ import LeaveApplication from "../models/LeaveApplication.js";
 
 class Students {
     static register = asyncWrapper(async (req, res) => {
-        console.log(req.body);
         var newStudent = new Student(req.body);
         newStudent.hash_password = bcrypt.hashSync(req.body.password, 10);
         newStudent.save((err, student) => {
@@ -21,7 +20,6 @@ class Students {
             } else {
                 student.hash_password = undefined;
                 let data = Response(Constants.RESULT_CODE.OK, Constants.RESULT_FLAG.SUCCESS, 'Student registered', (student));
-                console.log('success');
                 return res.send(data);
             }
         });
@@ -33,7 +31,8 @@ class Students {
         }, function (err, user) {
             if (err) throw err;
             if (!user || !user.comparePassword(req.body.Password)) {
-                return res.status(401).json({ message: 'Authentication failed. Invalid user or password.' });
+                let data = Response(Constants.RESULT_CODE.ERROR, Constants.RESULT_FLAG.FAIL, 'Authentication failed. Invalid user or password.', (err));
+                return res.send(data);
             }
             const updates = {};
             updates["Token"] = jwt.sign({ Email: user.Email, Name: user.Name, _id: user._id, Status: user.Status }, 'RESTFULAPIs', {
@@ -56,7 +55,6 @@ class Students {
                         }
                     }], (err, loginData) => {
                         let data = Response(Constants.RESULT_CODE.OK, Constants.RESULT_FLAG.SUCCESS, '', (loginData));
-                        console.log(data);
                         return res.send(data);
                     })
                 })
@@ -124,9 +122,10 @@ class Students {
         const date = new Date();
         const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
         const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 2);
-
-        console.log('firstDay', firstDay)
-        console.log('lastDay', lastDay)
+        if (!studentId) {
+            let data = Response(Constants.RESULT_CODE.ERROR, Constants.RESULT_FLAG.ERROR, 'Student Id is required', '');
+            return res.send(data);
+        }
         Attendance.aggregate([
             {
                 $match: {
@@ -172,15 +171,18 @@ class Students {
             status: "Pending",
 
         })
-        console.log('leaveApplication', leaveApplication)
-        try {
-            leaveApplication.save();
-            let data = Response(Constants.RESULT_CODE.OK, Constants.RESULT_FLAG.SUCCESS, '', leaveApplication);
-            return res.send(data);
-        } catch (err) {
-            let data = Response(Constants.RESULT_CODE.ERROR, Constants.RESULT_FLAG.FAIL, err);
-            return res.send(data);
-        }
+
+        leaveApplication.save((err, leave) => {
+            if (err) {
+                let data = Response(Constants.RESULT_CODE.ERROR, Constants.RESULT_FLAG.FAIL, 'Student already registered', (err));
+                return res.send(data);
+
+            } else {
+                leave.hash_password = undefined;
+                let data = Response(Constants.RESULT_CODE.OK, Constants.RESULT_FLAG.SUCCESS, 'Student registered', (leave));
+                return res.send(data);
+            }
+        });
     })
 
     static leaveApplicationById = asyncWrapper(async (req, res) => {
