@@ -25,10 +25,10 @@ function LeaveStatus() {
         },
             (err) => console.log(err))
     }
-   const totalDays = (fromDate, toDate) => {
+    const totalDays = (fromDate, toDate) => {
         const diff = moment(toDate).diff(moment(fromDate), 'days')
         return diff + 1
-   }
+    }
     return (
         <div className='student-container'>
             <Navbar />
@@ -38,28 +38,35 @@ function LeaveStatus() {
                 <div className='leave-detail-status'>
                     <h3>Leave Application Detail</h3>
                     <div>
-                        <table>
-                            <tr>
-                                <th>From Date</th>
-                                <th>To Date</th>
-                                <th>Leave Type</th>
-                                <th>No of Leave</th>
-                                <th>Status</th>
-                            </tr>
-                           {
-                            data?.map((item, index) => {
-                                return (
-                                    <tr key={index}>
-                                        <td>{moment(item.leaveFrom).format('DD/MM/YYYY')}</td>
-                                        <td>{moment(item.leaveTo).format('DD/MM/YYYY')}</td>
-                                        <td>{item.leaveType}</td>
-                                        <td>{totalDays(item.leaveFrom,item.leaveTo)}</td>
-                                        <td>{item.status}</td>
+                        {
+                            data && data.length > 0 ?
+                                <table>
+                                    <tr>
+                                        <th>From Date</th>
+                                        <th>To Date</th>
+                                        <th>Leave Type</th>
+                                        <th>No of Leave</th>
+                                        <th>Status</th>
                                     </tr>
-                                )
-                            })
-                           }
-                        </table>
+                                    {
+                                        data?.map((item, index) => {
+                                            return (
+                                                <tr key={index}>
+                                                    <td>{moment(item.leaveFrom).format('DD/MM/YYYY')}</td>
+                                                    <td>{moment(item.leaveTo).format('DD/MM/YYYY')}</td>
+                                                    <td>{item.leaveType}</td>
+                                                    <td>{totalDays(item.leaveFrom, item.leaveTo)}</td>
+                                                    <td>{item.status}</td>
+                                                </tr>
+                                            )
+                                        })
+                                    }
+                                </table>
+                                :
+                                <div className='no-data-found'>
+                                    <p>No Data Found !</p>
+                                </div>
+                        }
                     </div>
                 </div>
             </div>

@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should render without crashing 1`] = `
+<div
+  className="header-container"
+>
+  <div
+    className="dashboard-title"
+  >
+    <span>
+      <svg
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        strokeWidth="0"
+        style={
+          {
+            "color": undefined,
+          }
+        }
+        viewBox="0 0 24 24"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g>
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+          <path
+            d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"
+          />
+        </g>
+      </svg>
+    </span>
+    <h1>
+      DASHBOARD
+    </h1>
+    <h1
+      className="name-heading"
+    >
+      Welcome : Name
+    </h1>
+  </div>
+  <div
+    className="home-line"
+  />
+</div>
+`;

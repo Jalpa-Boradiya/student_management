@@ -1,17 +1,18 @@
 import React, { useEffect } from 'react'
 import Navbar from '../../components/navbar/Navbar'
-import './Home.css'
+import './Home.css';
 import { FaUser } from "react-icons/fa";
 import MyProfile from '../../components/profile/MyProfile';
 import StudentService from '../../components/service/StudentService';
 import Header from '../../components/header/Header';
-import '../../css/common.css'
+import '../../css/common.css';
 import Loader from '../../components/loader/Loader';
 
 function Home(props) {
 
     const { isLoading, onLoding } = props.loader
-    const userDetail = JSON.parse(localStorage.getItem('user'));
+    let userDetail = JSON.parse(localStorage.getItem('user'));
+   
     const [isModal, setModal] = React.useState(false);
     const [isCalendar, setCalendar] = React.useState(false);
 
@@ -35,7 +36,7 @@ function Home(props) {
                         <div className='home-line' />
                         <div className='main-content'>
                             <Header />
-                            <div className='middle-home' >
+                            <div className='middle-home' id='middle-home'>
                                 <MyProfile data={userDetail} />
                                 <StudentService data={userDetail} modal={modal} />
                             </div>

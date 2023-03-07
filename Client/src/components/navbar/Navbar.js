@@ -1,9 +1,10 @@
 import React from 'react'
 import './Navbar.css'
 import { RiLogoutBoxRFill } from "react-icons/ri";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Navbar() {
+    const navigate = useNavigate()
     return (
         <nav className='navbar-school'>
             <ul className='profileEle'>
@@ -11,7 +12,7 @@ function Navbar() {
                 <li><a href='#'>My profile</a></li>
                 <li><a href='#'>Setting</a></li>
                 <li className='logout-nav'>
-                    <button href='#'>Logout</button></li>
+                    <button onClick={() => navigate('/')}>Logout</button></li>
             </ul>
         </nav>
     )

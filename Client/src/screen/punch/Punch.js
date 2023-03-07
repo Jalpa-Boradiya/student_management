@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import './Punch.css'
 import '../../css/common.css'
-import Navbar from '../../components/navbar/Navbar'
-import Header from '../../components/header/Header'
 import { AiFillCloseCircle } from 'react-icons/ai'
 import { Service } from '../../service/Service'
 
@@ -38,7 +36,11 @@ function Punch(props) {
         setModal(false)
 
     }
-    const status = JSON.parse(localStorage.getItem('checkinout'))
+    let status;
+    if (typeof window !== 'undefined') {
+        status = localStorage.getItem('checkinout');
+    }
+    status = status == undefined && status == null ? true : status
     return (
         <div className='punch-container'>
             <div className='punch-title'>
@@ -47,9 +49,9 @@ function Punch(props) {
             <div className='close-icon'>
                 <AiFillCloseCircle onClick={() => setModal(false)} />
             </div>
-            <div className='select-site add-space-punch'>
-                <label>Site Name</label>
-                <select onChange={(event) => onHandle({ event, type: 'site' })}>
+            <div className='select-site add-space-punch' id="select-punch">
+                <label htmlFor='select'>Site Name</label>
+                <select onChange={(event) => onHandle({ event, type: 'site' })} data-testid="select-site" >
                     <option value="">Select site </option>
                     <option value="Ahmedabad">Ahmedabad</option>
                     <option value="Rajkot">Rajkot</option>
@@ -57,14 +59,16 @@ function Punch(props) {
                 </select>
             </div>
             <div className='select-site'>
-                <label>Remarks</label>
+                <label htmlFor='remark'>Remarks</label>
                 <input placeholder={"Enter Remarks(s)"}
+                    type="text"
                     value={remark}
+                    data-testid="input-remark"
                     onChange={(event) => onHandle({ event, type: 'remark' })}
                 />
             </div>
             <div className='punch-btn' onClick={submit}>
-                <button>{status ? 'Check/In' : 'Check/Out'}</button>
+                <button type="submit" data-testid="submit-button" >{status ? 'Check/In' : 'Check/Out'}</button>
             </div>
         </div>
     )

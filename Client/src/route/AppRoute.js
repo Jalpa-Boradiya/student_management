@@ -73,13 +73,13 @@ function AppRoute() {
                 :
                 <Routes>
                     <Route exact path="/" element={<Login loader={loader} />} />
-                    <Route exact path="/home" element={<Home loader={loader}/>} />
-                    <Route path="/signup" element={<Signup />} />
-                    <Route path="/leaveApp" element={<LeaveApplication loader={loader}/>} />
-                    <Route path="/punch" element={<Punch />} />
-                    <Route path="/calendar" element={<AttendanceCalendar />} />
-                    <Route path="/leaveStatus" element={<LeaveStatus />} />
-                    <Route path="/attendanceReport" element={<AttendanceReport />} />
+                    <Route exact path="/home" element={<Home loader={loader} />} />
+                    <Route exact path="/signup" element={<Signup />} />
+                    <Route exact path="/leaveApp" element={<LeaveApplication loader={loader} />} />
+                    <Route exact path="/punch" element={<Punch />} />
+                    <Route exact path="/calendar" element={<AttendanceCalendar />} />
+                    <Route exact path="/leaveStatus" element={<LeaveStatus />} />
+                    <Route exact path="/attendanceReport" element={<AttendanceReport />} />
                 </Routes>}
         </>
     )

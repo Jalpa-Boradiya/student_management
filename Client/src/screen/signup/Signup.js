@@ -8,6 +8,7 @@ import { FaGenderless } from 'react-icons/fa'
 import FormInput from '../../components/forminput/FormInput';
 import { Service } from '../../service/Service';
 import { useNavigate } from 'react-router-dom';
+import moment from 'moment';
 
 function Signup(props) {
     const navigate = useNavigate()
@@ -29,19 +30,20 @@ function Signup(props) {
         }
     };
     const [state, dispatch] = useReducer(reducer, initialVal);
-
+    
     const submit = (event) => {
         event.preventDefault();
         const data = {
             "Name": state.name,
             "Email": state.email,
             "Gender": state.gender,
-            "DOB": "1999-09-02",
+            "DOB": state.date,
             "password": state.password
         }
+       
         Service.post('register', data, (res) => {
             if (res.code === "200") {
-                navigate('/login')
+                navigate('/')
                 dispatch({ type: 'reset' })
             }
             else {

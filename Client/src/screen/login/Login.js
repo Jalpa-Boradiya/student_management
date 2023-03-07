@@ -10,7 +10,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { redirect } from 'react-router-dom';
 
 function Login(props) {
-console.log(props);
+
     const { isLoading, onLoding } = props.loader
 
     const initialVal = {

@@ -34,10 +34,6 @@ const studentData = [
         title: 'Student leave Calendar',
     },
     {
-        Icon: <FaUserGraduate className='service-icon' />,
-        title: 'Student Grade',
-    },
-    {
         Icon: <IoCalendar className='service-icon' />,
         title: 'Attendance Report',
     },

@@ -96,28 +96,35 @@ function AttendanceReport() {
                 <div className='leave-detail-status'>
                     <h3>Attendance Table</h3>
                     <div>
-                        <table>
-                            <tr>
-                                <th>Date</th>
-                                <th>CheckIn</th>
-                                <th>CheckOut</th>
-                                <th>Hours</th>
-                                <th>Status</th>
-                            </tr>
-                            {
-                                data.map((item, index) => {
-                                    return (
-                                        <tr key={index}>
-                                            <td>{getDay(item)}</td>
-                                            <td>{checkInOut(item.CheckInTime)}</td>
-                                            <td>{checkInOut(item.CheckOutTime)}</td>
-                                            <td>{totalHours(item)}</td>
-                                            {statusOfDay()}
-                                        </tr>
-                                    )
-                                })
-                            }
-                        </table>
+                        {
+                           data && data.length > 0 ?
+                                <table>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>CheckIn</th>
+                                        <th>CheckOut</th>
+                                        <th>Hours</th>
+                                        <th>Status</th>
+                                    </tr>
+                                    {
+                                        data.map((item, index) => {
+                                            return (
+                                                <tr key={index}>
+                                                    <td>{getDay(item)}</td>
+                                                    <td>{checkInOut(item.CheckInTime)}</td>
+                                                    <td>{checkInOut(item.CheckOutTime)}</td>
+                                                    <td>{totalHours(item)}</td>
+                                                    {statusOfDay()}
+                                                </tr>
+                                            )
+                                        })
+                                    }
+                                </table>
+                                :
+                                <div className='no-data-found'>
+                                    <p>No Data Found !</p>
+                                </div>
+                        }
                     </div>
                 </div>
             </div>
