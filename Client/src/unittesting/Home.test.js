@@ -1,6 +1,7 @@
 import renderer, { create } from 'react-test-renderer';
 import Home from '../../src/screen/home/Home';
 import { render } from '@testing-library/react';
+import '@testing-library/jest-dom';
 
 const loader = {
     isLoading: Boolean,
