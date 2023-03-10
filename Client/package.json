@@ -21,7 +21,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest",
+    "test": "cross-env NODE_ENV=development jest --config jest.config.json",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
