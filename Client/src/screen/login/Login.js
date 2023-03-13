@@ -37,12 +37,15 @@ function Login(props) {
             "Email": state.email,
             "Password": state.password
         }
-        Service.post('sign_in', data, (res) => {
+        Service.post('sign_in','student', data, (res) => {
             if (res.code === "200") {
                 localStorage.clear();
                 localStorage.setItem('user', JSON.stringify(res.data[0]));
                 navigate('/home')
                 dispatch({ type: 'reset' })
+                onLoding(false)
+            }else{
+                alert(res.message)
                 onLoding(false)
             }
         },

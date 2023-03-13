@@ -11,6 +11,8 @@ import AttendanceReport from '../screen/monthlyreport/AttendanceReport';
 import Punch from '../screen/punch/Punch';
 import Signup from '../screen/signup/Signup';
 import '../App.css'
+import Teacher from '../screen/Teacher/Teacher';
+import HomeworkListing from '../components/teacher/HomeworkListing';
 
 function AppRoute() {
     const [isLoading, setIsLoading] = React.useState(false)
@@ -72,6 +74,9 @@ function AppRoute() {
                 </div>
                 :
                 <Routes>
+                    <Route exact path="/teacher" element={<Teacher loader={loader} />} />
+                    <Route exact path="/teacher/homworkListing" element={<HomeworkListing loader={loader} />} />
+
                     <Route exact path="/" element={<Login loader={loader} />} />
                     <Route exact path="/home" element={<Home loader={loader} />} />
                     <Route exact path="/signup" element={<Signup />} />
