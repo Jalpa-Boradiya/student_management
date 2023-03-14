@@ -9,7 +9,7 @@ import { Service } from '../../service/Service'
 
 function LeaveApplication(props) {
   const { isLoading, onLoding } = props.loader
-  
+
   const navigate = useNavigate()
   const location = useLocation()
 
@@ -59,8 +59,7 @@ function LeaveApplication(props) {
       }
     )
   }
-const days = Math.floor((Date.parse(state.leaveTo) - Date.parse(state.leaveFrom)) / 86400000);
- 
+  const days = Math.floor((Date.parse(state.leaveTo) - Date.parse(state.leaveFrom)) / 86400000);
 
   return (
     <div className='student-container'>
@@ -88,7 +87,7 @@ const days = Math.floor((Date.parse(state.leaveTo) - Date.parse(state.leaveFrom)
             </div>
           </form>
           <div className='submit-leave'>
-            <p>Selected Leave Dates: <b>{days ? days : 0}</b></p>
+            <p>Selected Leave Dates: <b data-testid={"days-id"}>{days ? days : 0}</b></p>
             <button onClick={submitLeave}>Submit Application</button>
           </div>
         </div>

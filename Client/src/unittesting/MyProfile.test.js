@@ -12,6 +12,7 @@ userDetail === null ? userDetail = { Name: 'Name', Email: 'Email' } : userDetail
 
 describe('MyProfile', () => {
     it('match snapshot', () => {
+        // Snapshot testing
         const component = renderer.create(<MyProfile data={userDetail}/>);
         let tree = component.toJSON();
         expect(tree).toMatchSnapshot();

@@ -14,14 +14,20 @@ useNavigate.mockReturnValue({
     navigate: jest.fn()
 })
 
+let state = {
+    leaveTo : '03/03/2023',
+    leaveFrom : '05/03/2023'
+}
+
 let location = useLocation()
+const days = Math.floor((Date.parse(state.leaveTo) - Date.parse(state.leaveFrom)) / 86400000);
 
 describe('LeaveApplication', () => {
 
     it('should render without crashing', () => {
         const submit = jest.fn()
 
-        render(<LeaveApplication submit={submit} loader={props} />)
+        render(<LeaveApplication submit={submit} loader={props} days={days}/>)
 
 
         // const number = screen.getByRole("textbox", { type: 'number' })
@@ -42,11 +48,17 @@ describe('LeaveApplication', () => {
 
 
         userEvent.type(leaveType, 'One day')
-        // userEvent.type(number, '1234567890')
         userEvent.type(leaveFrom, '03/03/2023')
         userEvent.type(leaveTo, '05/03/2023')
         userEvent.type(reason, 'homework')
         const submitButton = screen.getByRole('button', { name: 'Submit Application' })
+        expect(submitButton).toBeInTheDocument();
+
+        // Numbers matchers
+        const daysfield = screen.getByTestId("days-id")
+        expect(daysfield).toBeDefined();
+        days ? expect(days).toBe(days) : expect(days).toBe(0)
+
         /*
             pending for api call 
 

@@ -14,8 +14,19 @@ const loader = {
 
 describe('Home', () => {
     it('match snapshot', () => {
-        const {asFragment} = render(<Home loader={loader} />);
+        const { asFragment } = render(<Home loader={loader} />);
         expect(asFragment).toMatchSnapshot();
+
+    });
+
+    // Exceptions
+    function compileAndroidCode() {
+        throw new Error('loader is not defined!');
+    }
+
+    test('loader is null and undefined', () => {
+        expect(() => compileAndroidCode()).toThrow();
+        !loader && expect(() => compileAndroidCode()).toThrow(Error);
 
     });
 })

@@ -25,7 +25,7 @@ function RightCard() {
         <>
             <div className='right-card teacher-right-card'>
                 <h3>ALL QUESTIONS</h3>
-                <ul className='question-list'>
+                <ul className='question-list' data-testid="question-list">
                     {
                         data?.length > 0 && data.map((item) => {
                             return (

@@ -27,5 +27,5 @@ export const Service = {
             .catch((err) => {
                 return error(err)
             });
-    }
+    },
 }

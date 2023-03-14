@@ -55,7 +55,7 @@ function Login(props) {
             })
     }
     return (
-        <div className='loginCal'>
+        <div className='loginCal' data-testid="login-test">
             <div className='loginSubCal'>
                 <h1 className='loginTitle'>Login Form</h1>
                 <p>Login here Using Email & Password</p>

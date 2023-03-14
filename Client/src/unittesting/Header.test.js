@@ -9,4 +9,8 @@ describe("Header", () => {
         const tree = wrapper.toJSON();
         expect(tree).toMatchSnapshot();
     });
+    it('works with resolves', () => {
+        expect.assertions(1);
+        return expect(user.getUserName(5)).resolves.toBe('Paul');
+    });
 })

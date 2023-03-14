@@ -4,6 +4,7 @@ import StudentService from "../components/service/StudentService"
 import AttendanceCalendar from "../screen/attendanceCalendar/AttendanceCalendar"
 import Punch from "../screen/punch/Punch"
 import renderer from 'react-test-renderer';
+import studentData from "../util/Student"
 
 
 const props = {
@@ -16,34 +17,40 @@ let { isCalendar, isModal } = props
 isCalendar = Boolean
 isModal = Boolean
 
+// Mocking Modules
 jest.mock('react-router-dom')
 
+// Mock Return Values
 useNavigate.mockReturnValue({
     navigate: jest.fn()
 })
 
-let studentDetail = []
-
-studentDetail = jest.mock('../../src/util/Student')
-
 describe('StudentService', () => {
-    const component = studentDetail !== null && studentDetail !== undefined &&
-        renderer.create(<StudentService modal={props} />);
+    const component = studentData !== null && studentData !== undefined &&
+    renderer.create(<StudentService modal={props} />);
     let tree = component.toJSON();
+    
+    // Snapshot testing
     expect(tree).toMatchSnapshot();
 
     it('isModal is true then render Punch', () => {
         const component = renderer.create(<Punch modal={props} />);
         let tree = component.toJSON();
+        // Snapshot testing
         expect(tree).toMatchSnapshot();
     });
 
     it('isCalendar is true then render AttendanceCalendar', () => {
         const component = renderer.create(<AttendanceCalendar modal={props} />);
         let tree = component.toJSON();
+        // Snapshot testing
         expect(tree).toMatchSnapshot();
     });
 
-
+    // Arrays and iterables
+    test('the listing has Leave application on it', () => {
+        expect(studentData).toContain(studentData.find((item) => item.title === 'Leave application'));
+        expect(new Set(studentData)).toContain(studentData.find((item) => item.title === 'Leave application'));
+    });
 
 })
