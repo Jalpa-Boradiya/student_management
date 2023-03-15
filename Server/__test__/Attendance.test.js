@@ -9,8 +9,9 @@ beforeAll(async () => {
 });
  /* Dropping the database and closing connection after each test. */
 afterAll(async () => {
-  await mongoose.connection.dropDatabase();
+//   await mongoose.connection.dropDatabase();
   await mongoose.connection.close();
+  done();
 });
 
 describe("Student Test case", () => {
