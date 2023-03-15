@@ -37,8 +37,12 @@ test('forEach mock function', () => {
     const getAllQuestion = jest.fn();
     const a = new getAllQuestion();
 
+    // Manual mock
+    // Replacing the mock using mockImplementation() or mockImplementationOnce()
+    // Calling jest.mock() with the module factory parameter
     const myMockFn = jest
         .fn(() => 'default')
+        .mockImplementation(() => 'print listing')
         .mockImplementationOnce(() => mockCallback.mock.calls[0])
         .mockImplementationOnce(() => mockCallback.mock.calls[1])
         .mockImplementationOnce(() => mockCallback.mock.calls[2])

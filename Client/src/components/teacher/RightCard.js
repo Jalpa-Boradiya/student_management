@@ -21,6 +21,8 @@ function RightCard() {
             (err) => { console.log(err) }
         )
     }
+
+
     return (
         <>
             <div className='right-card teacher-right-card'>

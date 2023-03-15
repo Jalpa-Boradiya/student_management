@@ -18,7 +18,6 @@ describe('Home', () => {
         expect(asFragment).toMatchSnapshot();
 
     });
-
     // Exceptions
     function compileAndroidCode() {
         throw new Error('loader is not defined!');

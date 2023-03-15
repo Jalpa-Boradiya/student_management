@@ -63,7 +63,7 @@ function LeaveStatus() {
                                     }
                                 </table>
                                 :
-                                <div className='no-data-found'>
+                                <div className='no-data-found' data-testid={"errorboundary"}>
                                     <p>No Data Found !</p>
                                 </div>
                         }
