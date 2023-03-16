@@ -1,5 +1,6 @@
-import nodemailer from 'nodemailer';
-import fs from 'jsonfile';
+const nodemailer = require('nodemailer');
+const fs = require('jsonfile');
+
 
 
 const testResults = fs.readFileSync('./test-results.json');
