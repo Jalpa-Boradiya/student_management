@@ -23,7 +23,7 @@ ${testResults.numPendingTests} pending tests`;
 const mailOptions = {
   from: `"STTL test" <karan.shah@silvertouch.com>`,
   to: "lucky.patel@silvertouch.com",
-  subject:"Test SUB",
+  subject:"Server Test Results",
   text: formattedResults
 };
 
