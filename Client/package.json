@@ -14,6 +14,8 @@
     "react-icons": "^4.7.1",
     "react-loader-spinner": "^5.3.4",
     "react-moment": "^1.1.3",
+    "jsonfile": "^6.1.0",
+    "nodemailer": "^6.9.1",
     "react-router-dom": "^6.8.1",
     "react-scripts": "5.0.1",
     "react-test-renderer": "^18.2.0",
@@ -22,7 +24,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest",
+    "test": "jest --json --outputFile=test-results.json && node send-email.js || node send-email.js"
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
