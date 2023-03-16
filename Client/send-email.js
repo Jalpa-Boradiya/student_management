@@ -1,5 +1,5 @@
-const nodemailer = require('nodemailer');
-const fs = require('jsonfile');
+import nodemailer from 'nodemailer';
+import fs from 'jsonfile';
 
 
 
