@@ -25,7 +25,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest --json --outputFile=test-results.json && node send-email.js || node send-email.js",
+    "test": "jest --json --outputFile=test-results.json && node send-email.cjs || node send-email.cjs",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
