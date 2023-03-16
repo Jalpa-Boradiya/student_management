@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --json --outputFile=test-results.json && node send-email.json || node send-email.json"
+    "test": "jest --json --outputFile=test-results.json && node send-email.js || node send-email.js"
   },
   "author": "@karan-shah",
   "license": "ISC",
